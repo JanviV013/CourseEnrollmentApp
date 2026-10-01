@@ -1,0 +1,40 @@
+@model CourseEnrollmentApp.Models.Course
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<h2>Course Details</h2>
+
+<div class="alert alert-warning">
+    <strong>Response Cache Info:</strong> Rendered at <b>@ViewBag.RenderTime</b> (Page cached for 60s).
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Course ID</th>
+        <td>@Model.CourseId</td>
+    </tr>
+    <tr>
+        <th>Course Name</th>
+        <td>@Model.CourseName</td>
+    </tr>
+    <tr>
+        <th>Duration</th>
+        <td>@Model.Duration</td>
+    </tr>
+    <tr>
+        <th>Original Fees</th>
+        <!-- Formatted as Indian Rupees -->
+        <td>₹@Model.Fees.ToString("N2")</td>
+    </tr>
+    <tr>
+        <th>Discount Percentage</th>
+        <td>@Model.DiscountPercentage%</td>
+    </tr>
+    <tr class="table-success">
+        <th>Final Payable Fees</th>
+        <!-- Formatted as Indian Rupees -->
+        <td><strong>₹@Convert.ToDecimal(ViewBag.FinalFees).ToString("N2")</strong></td>
+    </tr>
+</table>

@@ -1,0 +1,40 @@
+@* Specify the list of UserViewModel as the Model *@
+@model IEnumerable<CourseEnrollmentApp.Models.UserViewModel>
+
+@{
+    ViewData["Title"] = "User Information";
+}
+
+<h2>User List (Retrieved Asynchronously)</h2>
+
+@* Verify model is not null and has items *@
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Company Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@(user.Company != null ? user.Company.Name : "N/A")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        No user records found or unable to connect to the external API.
+    </div>
+}

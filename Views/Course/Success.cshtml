@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Enrollment Success";
+}
+
+<h2 class="text-success">Enrollment Successful!</h2>
+
+<div class="card p-3 mt-3">
+    <h4>State Values Summary:</h4>
+    <ul>
+        <!-- Hidden Field result -->
+        <li><strong>Course ID (submitted via Hidden Field):</strong> @ViewBag.SubmittedCourseId</li>
+        <!-- Cookie result -->
+        <li><strong>Student Name (saved in Cookie):</strong> @ViewBag.SubmittedStudentName</li>
+        <!-- Session result -->
+        <li><strong>Selected Course (saved in Session):</strong> @Context.Session.GetString("SelectedCourse")</li>
+    </ul>
+</div>
+
+<a href="/StateManagement/Enroll?courseId=101" class="btn btn-secondary mt-3">Back to Form</a>
